@@ -9,8 +9,9 @@ import { CartComponent } from './components/cart/cart.component';
 const routes: Routes = [
   {path: '', component: ProductListComponent},
   {path: 'product/:id', component: ProductItemDetailComponent},
-  {path: 'confirmation', component: ConfirmationComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'confirmation/:info', component: ConfirmationComponent},
+  {path: 'cart', component: CartComponent},
+  {path: '**', component: ProductListComponent}
 ];
 
 @NgModule({
