@@ -68,7 +68,7 @@
     display: flex;
     margin: 92px auto 32px;
     padding: 0 16px;
-    max-width: 960px;
+    max-width:1024px;
     flex-direction: column;
     align-items: center;
   }
@@ -305,3 +305,29 @@
       visibility: hidden;
     }
   }
+
+*.icon-red {color: #e64905}
+*.icon-grey {color: grey}
+*.icon-white {color: white}
+fa-icon.badge {   
+    width:100px;
+    text-align:center;
+    vertical-align:middle;
+    position: relative;
+}
+.badge:after{
+    content:attr(data-count);
+    /* position: absolute;  */
+    background: rgb(242, 59, 17);
+    height:2rem;
+    top:1rem;
+    right:1.5rem;
+    width:2rem;
+    text-align: center;
+    line-height: 2rem;;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    color:white;
+    /* border:1px solid rgba(254, 187, 187, 0.76); */
+    /* padding: 0.2em; */
+}
