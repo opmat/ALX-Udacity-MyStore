@@ -20,24 +20,24 @@
     margin-bottom: 8px;
   }
 
-  /* body{
+  body{
     background-color:#dce3f0;
-} */
+}
 
 .height{
     
-    height:100vh;
+    height:55vh; /*100vh*/
 }
 
 .card{
     
-    width:350px;
+    width:300px; /*350px*/
     height:370px;
 }
 
 .image{
     position:absolute;
-    right:12px;
+    right: 50px; /*12px;*/
     top:10px;
 }
 
