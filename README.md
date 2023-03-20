@@ -18,9 +18,17 @@ Some of the functions include;
 * Checkout selected products from cart
 ## Getting Started
 
-To get started, clone or downlad the repository and you can then install the project with `npm`. You first `cd` into the repository directory and run `npm install` in your terminal at the project root.
+To get started, clone or downlad the repository 
+
+```bash
+git clone https://github.com/opmat/ALX-Udacity-MyStore.git
+```
+
+
+Then you can then install the project with `npm`. You first `cd` into the repository directory and run `npm install` in your terminal at the project root.
 
 ```text
+cd ALX-Udacity-MyStore
 npm install
 ```
 
