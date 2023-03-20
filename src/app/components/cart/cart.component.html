@@ -1,1 +1,158 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="pull-right">(<strong>{{ cartSize }}</strong>) items</span>
+                        <h5>Items in your cart</h5>
+                    </div>
+                    <div  *ngIf="(!cartItems.length)" class="ibox-title" style="text-align:center;">
+                        <span class="pull-right">(<strong>0</strong>) items</span>
+                        <h5>You have no item in your cart</h5>
+                    </div>
+                    <div  *ngFor="let item of cartItems" class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table shoping-cart-table">
+                                <tbody>
+                                <tr>
+                                    <td width="90">
+                                        <div class="cart-product-imitation">
+                                            <img src="{{item.image}}" width="80px" />
+                                        </div>
+                                    </td>
+                                    <td class="desc">
+                                        <h3>
+                                        <a href="/product/{{item.id}}" class="text-navy">
+                                         {{item.product_name}}
+                                        </a>
+                                        </h3>
+                                        <p class="small">
+                                            {{item.description}}
+                                        </p>
+                                        <!-- <dl class="small m-b-none">
+                                            <dt>Description lists</dt>
+                                            <dd>A description list is perfect for defining terms.</dd>
+                                        </dl> -->
+    
+                                        <div class="m-t-sm">
+                                            <!-- <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
+                                            | -->
+                                            <a href="#" (click)="removeItem(item)" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
+                                        </div>
+                                    </td>
+    
+                                    <td>
+                                        ${{ item.price | number:'1.2-2' }}
+                                        <s class="small text-muted">${{ (item.price+(item.price*0.1)) | number:'1.2-2' }}</s>
+                                    </td>
+                                    <td width="65">
+                                        <input type="number" (change)="onQtyChange(item, (myQty.value))" #myQty min=0 max= 100 class="form-control number-input" name="qty" placeholder="1">
+                                    </td>
+                                    <td>
+                                        <h6>
+                                            ${{ item.price | number:'1.2-2' }}
+                                        </h6>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    
+                    </div>
+                    
+                    
+                    
+                    
+                    <div  *ngIf="(cartItems.length)" class="ibox-content">
+                        <button [disabled]="checkoutForm.invalid" class="btn btn-primary pull-right"(click)="onSubmit()"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                        <button routerLink="/" class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>
+    
+                    </div>
+                </div>
+    
+            </div>
+            <div class="col-md-3">
+                <div class="ibox" style="min-width: 210px;">
+                    <div class="ibox-title">
+                        <h5>Cart Summary</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <span>
+                            Total
+                        </span>
+                        <h2 class="font-bold">
+                            <!-- ${{cartTotal | number: '1.2-2'}} -->
+                            <div [innerHTML]="cartTotal | currency"></div>
+                        </h2>
+    
+                        <hr>
+                        <form *ngIf="(cartItems.length)" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
+
+                            <label for="fullname">First Name: </label>
+                            <input id="fullname" type="text" minlength="10" required formControlName="fullname">
+                          
+                            <label for="address">Address: </label>
+                            <input id="address" type="text" formControlName="address" required minlength="10">
+                          
+                            <label for="phone">Phone: </label>
+                            <input id="phone" type="text" required formControlName="phone"> 
+                          
+                            <label for="creditcard">Credit Card Number: </label>
+                            <input id="creditcard" type="text" required formControlName="creditcard" minlength="16"> 
+                          
+                            <label for="expiry">Expiration Date: </label>
+                            <input id="expiry" type="text" formControlName="expiry" required placeholder="mm/yy"> 
+                          
+                            <label for="cvv">CVV: </label>
+                            <input id="cvv" type="text" formControlName="cvv" minlength="3" required maxlength="3" placeholder="xxx"> 
+                          
+                          </form>
+    
+                        <hr>
+                        <div  *ngIf="(cartItems.length)" class="m-t-sm">
+                            <div class="btn-group">
+                                <button [disabled]="checkoutForm.invalid" class="btn btn-primary pull-right"(click)="onSubmit()" style="font-size:0.8em"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                            <!-- <a href="#" [disabled]="form.invalid" (click)="onSubmit()" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</a> -->
+                            <a href="#" (click)="cancelOrder()" class="btn btn-white btn-sm"> Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- <div class="ibox">
+                    <div class="ibox-content">
+    
+                        <p class="font-bold">
+                        Other products you may be interested
+                        </p>
+                        <hr>
+                        <div>
+                            <a href="#" class="product-name"> Product 1</a>
+                            <div class="small m-t-xs">
+                                Many desktop publishing packages and web page editors now.
+                            </div>
+                            <div class="m-t text-righ">
+    
+                                <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <a href="#" class="product-name"> Product 2</a>
+                            <div class="small m-t-xs">
+                                Many desktop publishing packages and web page editors now.
+                            </div>
+                            <div class="m-t text-righ">
+    
+                                <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <c-toaster class="p-3" position="fixed"  ></c-toaster>
