@@ -16,6 +16,10 @@
             "outputPath": "dist/alx-udacity-my-store",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "buffer"
+            ],
             "polyfills": [
               "zone.js"
             ],
@@ -88,6 +92,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []
